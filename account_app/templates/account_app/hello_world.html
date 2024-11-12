@@ -1,10 +1,28 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div style="height: 20rem; background-color: #38df81; border-radius: 1rem; margin: 2rem;">
-  <h1>
-    Testing
+<div style="border-radius: 1rem; margin: 2rem; text-align: center">
+  <h1 style="font-family: 'Oleo Script'">
+    Hello World List!
   </h1>
+
+  <form action="/account/hello_world" method="post">
+    {% csrf_token %}
+    <div>
+      <input type="text" name="hello_world_input">
+    </div>
+    <div>
+      <input type="submit" class="btn btn-primary" value="POST">
+    </div>
+  </form>
+
+  {% if outputs %}
+    {% for output in outputs %}
+    <h1>
+      {{ output.text }}
+    </h1>
+    {% endfor %}
+  {% endif %}
 </div>
 
 {% endblock %}
