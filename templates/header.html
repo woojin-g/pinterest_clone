@@ -10,6 +10,9 @@
     <a href="{% url 'account_app:login' %}?next={% url 'account_app:hello_world' %}">
       <span class="header_tab_button">login</span>
     </a>
+    <a href="{% url 'account_app:create' %}?next={% url 'account_app:login' %}">
+      <span class="header_tab_button">Sign Up</span>
+    </a>
     {% else %}
     <a href="{% url 'account_app:detail' pk=user.pk %}">
       <span class="header_tab_button">My Page</span>
