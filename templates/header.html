@@ -6,6 +6,14 @@
     <span>nav1</span>
     <span>nav2</span>
     <span>nav3</span>
-    <span>nav4</span>
+    {% if not user.is_authenticated %}
+    <a href="{% url 'account_app:login' %}?next={% url 'account_app:hello_world' %}">
+      <span>login</span>
+    </a>
+    {% else %}
+    <a href="{% url 'account_app:logout' %}?next={% url 'account_app:login' %}">
+      <span>logout</span>
+    </a>
+    {% endif %}
   </div>
 </div>

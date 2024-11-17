@@ -1,11 +1,19 @@
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
+from django.views.generic import CreateView
 
 from account_app.models import HelloWorld
 
 
-# Create your views here.
+class AccountCreateView(CreateView):
+  model = User
+  form_class = UserCreationForm
+  success_url = reverse_lazy('account_app:hello_world')
+  template_name = 'account_app/create.html'
+
 
 def hello_world(request):
   if request.method == 'POST':

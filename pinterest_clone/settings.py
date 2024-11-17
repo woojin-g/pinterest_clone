@@ -15,7 +15,8 @@ from pathlib import Path
 import environ
 import os
 
-from django.conf.global_settings import STATIC_ROOT, STATICFILES_DIRS
+from django.conf.global_settings import STATIC_ROOT, STATICFILES_DIRS, LOGIN_REDIRECT_URL, LOGOUT_REDIRECT_URL
+from django.urls import reverse_lazy
 
 env = environ.Env(
     # set casting, default value
@@ -49,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrap5',
     'account_app',
 ]
 
@@ -142,3 +144,6 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = reverse_lazy('account_app:hello_world')
+LOGOUT_REDIRECT_URL = reverse_lazy('account_app:login')
