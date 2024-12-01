@@ -8,7 +8,7 @@
     <div class="mb-4">
       <h4>Quit Pinterest</h4>
     </div>
-    <form action="" method="post">
+    <form action="{% url 'account_app:delete' pk=target_user.pk %}" method="post">
       {% csrf_token %}
       <input type="submit" class="btn btn-danger rounded-pill col-6 mt-3">
     </form>
